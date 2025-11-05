@@ -483,7 +483,7 @@ export default function Home() {
 
               {/* Card */}
               <div className="mx-auto max-w-2xl">
-                <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl border border-slate-200 dark:border-slate-700">
+                <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl border border-slate-200 dark:border-slate-700 pb-28 md:pb-0 relative z-10">
                   <div className="grid md:grid-cols-2 gap-5 md:gap-6 mb-6 md:mb-8">
                     <div>
                       <label htmlFor="name" className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
