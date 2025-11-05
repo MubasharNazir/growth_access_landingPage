@@ -1,0 +1,603 @@
+'use client';
+
+import { useState, FormEvent } from 'react';
+import Image from 'next/image';
+import Chatbot from './components/Chatbot';
+import LogoCloud from '@/components/logo-cloud';
+export default function Home() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    service: '',
+    message: '',
+    budget: '' // Added budget field
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitSt                  <p className="text-[12px] text-slate-500 dark:text-slate-400 text-center mt-4">
+                    By submitting this form, you agree to our privacy policy. We'll never share your information.
+                  </p>s] = useState<'idle' | 'success' | 'error'>('idle');
+  const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    // Simulate API call
+    setTimeout(() => {
+      console.log('Form submitted:', formData);
+      setIsSubmitting(false);
+      setSubmitStatus('success');
+      
+      // Reset form after success
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: '',
+          budget: '' // Reset budget
+        });
+        setSubmitStatus('idle');
+      }, 3000);
+    }, 1500);
+
+    // Here you would typically send to your API:
+    // try {
+    //   const response = await fetch('/api/contact', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(formData),
+    //   });
+    //   if (response.ok) {
+    //     setSubmitStatus('success');
+    //   } else {
+    //     setSubmitStatus('error');
+    //   }
+    // } catch (error) {
+    //   setSubmitStatus('error');
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
+  };
+  return (
+    <>
+      <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-950 dark:via-blue-950 dark:to-indigo-950">
+        {/* Navigation */}
+        <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 dark:bg-slate-950/80 dark:border-slate-800">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+                          <div className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt="Company Logo"
+                width={150}
+                height={40}
+                className="h-10 w-auto"
+                priority
+              />
+            </div>
+              <div className="hidden md:flex items-center space-x-8">
+                {/* <a href="#services" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Services</a>
+                <a href="#automation" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Solutions</a>
+                <a href="#contact" className="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Contact</a> */}
+                <button className="px-6 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg shadow-blue-500/30 font-medium">
+                 Schedule a Free Consultation
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-20 overflow-hidden">
+          {/* Animated Background Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 dark:from-blue-950/20 dark:via-indigo-950/10 dark:to-purple-950/20 animate-gradient"></div>
+          
+          {/* Floating Decorative Elements */}
+          <div className="absolute top-20 left-10 w-20 h-20 bg-blue-400/10 rounded-full blur-xl animate-float"></div>
+          <div className="absolute top-40 right-20 w-32 h-32 bg-indigo-400/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-40 left-20 w-24 h-24 bg-purple-400/10 rounded-full blur-xl animate-float" style={{ animationDelay: '4s' }}></div>
+          <div className="absolute bottom-20 right-10 w-28 h-28 bg-pink-400/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+          
+          {/* Grid Pattern Overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+          
+          <div className="relative max-w-5xl mx-auto text-center w-full z-10 pt-12 md:pt-16 lg:pt-20">
+            {/* Badge/Trust Indicator */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 mb-10 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-full border border-slate-200 dark:border-slate-700 shadow-sm hero-animate-1">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Trusted by 500+ Companies in UAE</span>
+            </div>
+            
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight hero-animate-1 relative">
+              <span className="relative z-10">Transform Your Business with</span>
+              <br />
+              <span className="relative z-10 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent animate-gradient">
+                Technology Solutions.
+              </span>
+              {/* Glow effect behind text */}
+              <span className="absolute inset-0 blur-3xl bg-gradient-to-r from-blue-600/30 via-indigo-600/30 to-purple-600/30 -z-10"></span>
+            </h1>
+            <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-16 md:mb-20 leading-relaxed max-w-3xl mx-auto hero-animate-2">
+              AI-Powered Automation, Digital Marketing & Web Development Services That Drive Real Results Across the UAE.
+            </p>
+            
+            {/* Key Selling Points */}
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-10 mb-14">
+              {[
+                "50+ Successful Projects",
+                "UAE Market Expertise",
+                "Proven ROI Results"
+              ].map((point, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex items-center gap-3 group hero-animate-point"
+                  style={{ animationDelay: `${500 + idx * 200}ms` }}
+                >
+                  <div className="relative">
+                                          <svg 
+                        className="w-5 h-5 text-blue-500 flex-shrink-0 transition-all duration-300 group-hover:scale-110 group-hover:text-blue-600 group-hover:rotate-12" 
+                      fill="currentColor" 
+                      viewBox="0 0 20 20"
+                    >
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-sm md:text-base font-medium text-slate-700 dark:text-slate-300 relative transition-all duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                    {point}
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-400/50 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Call-to-Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center hero-animate-buttons mb-20">
+              <a href="#services" className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold text-lg shadow-lg border-2 border-blue-600 dark:border-blue-500 inline-block">
+                Explore Our Services
+              </a>
+              <a href="#contact" className="px-8 py-4 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm text-slate-900 dark:text-slate-100 rounded-lg font-semibold text-lg border-2 border-slate-300 dark:border-slate-600 inline-block">
+                View Success Stories
+              </a>
+            </div>
+            
+            {/* Scroll Indicator */}
+            <div className="flex flex-col items-center gap-2 hero-animate-buttons">
+              <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">Scroll to explore</span>
+              <div className="w-6 h-10 border-2 border-slate-300 dark:border-slate-600 rounded-full flex items-start justify-center p-2">
+                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <LogoCloud />
+
+        {/* Services Section */}
+        <section id="services" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/20 to-white dark:from-slate-900 dark:to-slate-950">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 md:mb-20">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 md:mb-5">Our Services</h2>
+              <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Comprehensive digital solutions tailored to accelerate your business growth
+              </p>
+            </div>
+            
+            {/* Continuous Moving Gallery */}
+            <div className="mt-14">
+              <h3 className="text-center text-lg md:text-xl font-medium text-slate-800 dark:text-slate-100">Website we developed</h3>
+              <div className="marquee mt-6">
+                <div className="marquee-track gap-6 pr-6">
+                  {[
+                    "/images/services/web-development.jpg",
+                    "/images/services/digital-marketing.jpg",
+                    "/images/services/automation.jpg",
+                    "/images/services/it-services.jpg",
+                    "/images/services/web-development.jpg",
+                    "/images/services/digital-marketing.jpg",
+                    "/images/services/automation.jpg",
+                    "/images/services/it-services.jpg",
+                  ].map((src, i) => (
+                    <div key={i} className="relative h-40 sm:h-48 md:h-56 w-[300px] sm:w-[360px] md:w-[420px] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-md">
+                      <Image src={src} alt={`Showcase ${i+1}`} fill className="object-cover" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Galleries */}
+            <div className="mt-12 space-y-12">
+              <div>
+                <h3 className="text-center text-lg md:text-xl font-medium text-slate-800 dark:text-slate-100">Result Driven Marketing & Lead Generation</h3>
+                <div className="marquee mt-6">
+                  <div className="marquee-track gap-6 pr-6">
+                    {[
+                      "/images/services/digital-marketing.jpg",
+                      "/images/services/web-development.jpg",
+                      "/images/services/automation.jpg",
+                      "/images/services/it-services.jpg",
+                      "/images/services/digital-marketing.jpg",
+                      "/images/services/web-development.jpg",
+                      "/images/services/automation.jpg",
+                      "/images/services/it-services.jpg",
+                    ].map((src, i) => (
+                      <div key={i} className="relative h-40 sm:h-48 md:h-56 w-[300px] sm:w-[360px] md:w-[420px] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-md">
+                        <Image src={src} alt={`Gallery 2 - ${i+1}`} fill className="object-cover" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-center text-lg md:text-xl font-medium text-slate-800 dark:text-slate-100">AI & Automation Showcases</h3>
+                <div className="marquee mt-6">
+                  <div className="marquee-track gap-6 pr-6">
+                    {[
+                      "/images/services/automation.jpg",
+                      "/images/services/it-services.jpg",
+                      "/images/services/web-development.jpg",
+                      "/images/services/digital-marketing.jpg",
+                      "/images/services/automation.jpg",
+                      "/images/services/it-services.jpg",
+                      "/images/services/web-development.jpg",
+                      "/images/services/digital-marketing.jpg",
+                    ].map((src, i) => (
+                      <div key={i} className="relative h-40 sm:h-48 md:h-56 w-[300px] sm:w-[360px] md:w-[420px] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-md">
+                        <Image src={src} alt={`Gallery 3 - ${i+1}`} fill className="object-cover" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Removed old split grid (list + showcase) */}
+            <div className="hidden" />
+          </div>
+        </section>
+
+        {/* Automation Section */}
+        <section id="automation" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                   Optimize. <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Scale.</span>
+                </h2>
+                <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                  Our AI-powered automation solutions reduce manual work by up to 80%, letting you focus on what matters most - growing your business.
+                </p>
+                <div className="space-y-6 md:space-y-7">
+                  {[
+                    { title: "Automated Workflows", desc: "Streamline operations with custom automation pipelines" },
+                    { title: "AI-Powered Insights", desc: "Get real-time recommendations from intelligent systems" },
+                    { title: "Scalable Infrastructure", desc: "Auto-scale based on demand and traffic patterns" },
+                    { title: "Instant Deployments", desc: "CI/CD pipelines for rapid, error-free deployments" }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start space-x-5 group">
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-900 dark:to-indigo-900 rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+                        <svg className="w-7 h-7 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <h3 className="text-lg md:text-xl font-semibold mb-1.5">{item.title}</h3>
+                        <p className="text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-3xl blur-3xl animate-pulse-glow"></div>
+                <div className="relative bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-700">
+                  <div className="space-y-3 font-mono text-xs md:text-sm">
+                    <div className="flex items-center gap-2 mb-3 pb-3 border-b border-slate-700">
+                      <div className="flex gap-2">
+                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      </div>
+                      <span className="text-slate-400 ml-4 text-xs md:text-sm">automation.js</span>
+                    </div>
+                    {[
+                      { text: "async", color: "purple", indent: 0 },
+                      { text: "function", color: "blue", indent: 0 },
+                      { text: "optimize()", color: "yellow", indent: 0 },
+                      { text: "{", color: null, indent: 0 },
+                      { text: "const", color: "purple", indent: 2 },
+                      { text: "result", color: "blue", indent: 2 },
+                      { text: "=", color: null, indent: 2 },
+                      { text: "await", color: "purple", indent: 2 },
+                      { text: "ai.process();", color: "green", indent: 2 },
+                      { text: "return", color: "purple", indent: 4 },
+                      { text: "success;", color: "green", indent: 4 },
+                      { text: "}", color: null, indent: 0 }
+                    ].map((line, idx) => (
+                      <div key={idx} className="flex items-center" style={{ paddingLeft: `${line.indent * 1.5}rem` }}>
+                        {line.color === "purple" && <span className="text-purple-400">{line.text}</span>}
+                        {line.color === "blue" && <span className="text-blue-400">{line.text}</span>}
+                        {line.color === "yellow" && <span className="text-yellow-400">{line.text}</span>}
+                        {line.color === "green" && <span className="text-green-400">{line.text}</span>}
+                        {line.color === null && <span className="text-slate-300">{line.text}</span>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+              {/* Contact Form Section */}
+      <section id="contact" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          {/* Decorative gradient wrapper */}
+          <div className="relative rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-gradient-to-br from-emerald-50 via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
+            {/* fine diagonal lines */}
+            <div className="pointer-events-none absolute inset-0 opacity-60 [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.06)_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+            <div className="relative px-4 sm:px-8 lg:px-12 py-12 md:py-16">
+              <div className="text-center mb-10 md:mb-12">
+                <h2 className="text-3xl md:text-5xl font-semibold tracking-tight mb-3">Get a quote</h2>
+                <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base max-w-2xl mx-auto">
+                  We are here to help you get onboard with strong presence in the UAE market.
+                </p>
+              </div>
+
+              {/* Card */}
+              <div className="mx-auto max-w-2xl">
+                <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-800 rounded-2xl p-6 md:p-8 lg:p-10 shadow-xl border border-slate-200 dark:border-slate-700">
+                  <div className="grid md:grid-cols-2 gap-5 md:gap-6 mb-6 md:mb-8">
+                    <div>
+                      <label htmlFor="name" className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="John Doe"
+                        className="w-full px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-0 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="john@example.com"
+                        className="w-full px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all text-sm"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-5 md:gap-6 mb-6 md:mb-8">
+                    <div>
+                      <label htmlFor="phone" className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="+1 (555) 123-4567"
+                        className="w-full px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="company" className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                        Company Name
+                      </label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        placeholder="Your Company"
+                        className="w-full px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all text-sm"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6 md:mb-8">
+                    <label htmlFor="service" className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Service Interest *
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="service"
+                        name="service"
+                        required
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="w-full appearance-none pr-10 px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all text-sm"
+                      >
+                        <option value="">Select a service...</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="it-services">IT Services</option>
+                        <option value="automation">AI & Automation</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="analytics">Analytics & Insights</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="other">Other</option>
+                      </select>
+                      {/* Chevron Icon */}
+                      <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500 dark:text-slate-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.17l3.71-2.94a.75.75 0 11.92 1.18l-4.25 3.37a.75.75 0 01-.92 0L5.21 8.39a.75.75 0 01.02-1.18z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  <div className="mb-6 md:mb-8">
+                    <label htmlFor="message" className="block text-xs md:text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      required
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="Tell us about your project and how we can help..."
+                      className="w-full px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all resize-none text-sm"
+                    ></textarea>
+                  </div>
+
+                  {/* Submit */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="mt-2 w-full px-6 py-3 bg-emerald-800 hover:bg-emerald-900 text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Submit
+                        <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                      </>
+                    )}
+                  </button>
+
+                  <p className="text-[12px] text-slate-500 dark:text-slate-400 text-center">
+                    By submitting this form, you agree to our privacy policy. We’ll never share your information.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8">
+            Ready to Transform Your Business?
+          </h2>
+          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 md:mb-12 max-w-2xl mx-auto leading-relaxed">
+            Join hundreds of companies already scaling with our automated solutions
+          </p>
+          <a href="#contact" className="inline-block px-10 py-5 md:py-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold text-lg md:text-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-105 active:scale-95">
+            Schedule Free Consultation
+          </a>
+        </div>
+      </section>
+
+        {/* Footer */}
+        <footer className="border-t border-slate-800 bg-gradient-to-b from-slate-950 to-slate-900 text-slate-300">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div className="grid gap-10 md:grid-cols-3">
+              {/* Brand */}
+              <div>
+                <div className="flex items-center mb-5">
+                  <Image src="/images/logo.png" alt="Company Logo" width={150} height={40} className="h-9 w-auto brightness-0 invert" />
+                </div>
+                <p className="text-slate-400">
+                  Empowering businesses with digital innovation and automation excellence.
+                </p>
+              </div>
+
+              {/* Contact */}
+              <div>
+                <h3 className="text-white font-semibold mb-4">Contact</h3>
+                <ul className="space-y-3">
+                  <li className="text-slate-400">Office # 308 Majid Al Futtaim Building, near Abu Dhabi Mall, Abu Dhabi, United Arab Emirates.</li>
+                  <li>
+                    <a href="https://wa.me/971505452094" className="hover:text-blue-400 transition-colors">Phone/WhatsApp: +971 505452094</a>
+                  </li>
+                  <li>
+                    <a href="mailto:sales@growthaccess.ae" className="hover:text-blue-400 transition-colors">Email: sales@growthaccess.ae</a>
+                  </li>
+                  <li>
+                    <a href="https://maps.google.com/?q=Majid%20Al%20Futtaim%20Building%20Abu%20Dhabi%20Mall" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-blue-400 hover:underline">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5 9 6.343 9 8s1.343 3 3 3zm0 0c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z"/></svg>
+                      Find us on Google Map
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Quick Links */}
+              <div>
+                <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+                <ul className="space-y-2">
+                  {[
+                    { label: 'Services', href: '#services' },
+                    { label: 'Automation', href: '#automation' },
+                    { label: 'Contact', href: '#contact' },
+                  ].map((l, i) => (
+                    <li key={i}><a href={l.href} className="hover:text-blue-400 transition-colors">{l.label}</a></li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="border-t border-slate-800 mt-10 pt-8 flex flex-col md:flex-row justify-between items-center">
+              <p className="text-slate-500">© 2025 GrowthAccess Technologies, Abu Dhabi, UAE.</p>
+              <div className="flex gap-3 mt-4 md:mt-0">
+                <a href="https://wa.me/971504230207" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-full bg-green-600/90 hover:bg-green-600 flex items-center justify-center" aria-label="WhatsApp">
+                  <svg className="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654A11.882 11.882 0 0012.045 24C18.6 24 23.935 18.665 23.938 12.107A11.815 11.815 0 0012.05 0z"/></svg>
+                </a>
+                <a href="mailto:sales@growthaccess.ae" className="w-9 h-9 rounded-full bg-blue-600/90 hover:bg-blue-600 flex items-center justify-center" aria-label="Email">
+                  <svg className="w-4.5 h-4.5 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4h20v16H2z" opacity=".2"/><path d="M22 6v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6m20 0-10 7L2 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </main>
+
+      {/* Floating WhatsApp FAB */}
+      <a
+        href="https://wa.me/+971554379700"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BA56] text-white shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center z-50"
+      >
+        <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+
+      {/* Chatbot */}
+      <Chatbot />
+    </>
+  );
+}
