@@ -3,6 +3,7 @@
 import { useState, FormEvent, useEffect } from 'react';
 import Image from 'next/image';
 import Chatbot from './components/Chatbot';
+import emailjs from '@emailjs/browser';
 import LogoCloud from '@/components/logo-cloud';
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -48,44 +49,72 @@ export default function Home() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitting(false);
+    const emailBody = `
+      <h2>New contact request</h2>
+      <p><strong>Name:</strong> ${formData.name || '-'} </p>
+      <p><strong>Email:</strong> ${formData.email || '-'} </p>
+      <p><strong>Phone:</strong> ${formData.phone || '-'} </p>
+      <p><strong>Company:</strong> ${formData.company || '-'} </p>
+      <p><strong>Service:</strong> ${formData.service || '-'} </p>
+      <p><strong>Budget:</strong> ${formData.budget || '-'} </p>
+      <p><strong>Message / Description:</strong><br/>${(formData.message || '-').replace(/\n/g, '<br/>')}</p>
+    `;
+
+    const fullMessage = `Name: ${formData.name || '-'}\nEmail: ${formData.email || '-'}\nPhone: ${formData.phone || '-'}\nCompany: ${formData.company || '-'}\nService: ${formData.service || '-'}\nBudget: ${formData.budget || '-'}\n\nDescription:\n${formData.message || '-'}`;
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      service: formData.service,
+      // Send the combined details in the 'message' field so templates using {{message}} receive full info
+      message: fullMessage,
+      budget: formData.budget,
+      // Also send a formatted HTML body so the email contains a single readable block
+      email_body: emailBody,
+      // common helper for reply-to
+      reply_to: formData.email,
+      // subject and plain text fallback
+      subject: `New contact request from ${formData.name || 'Website Visitor'}`,
+      plain_text: fullMessage,
+    };
+
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS environment variables (NEXT_PUBLIC_EMAILJS_*) are not set');
+      }
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+
+      console.log('Form submitted and email sent via EmailJS:', templateParams);
       setSubmitStatus('success');
-      
+
       // Reset form after success
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        service: '',
+        message: '',
+        budget: '' // Reset budget
+      });
+
+      // Clear success message after a short delay
       setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          service: '',
-          message: '',
-          budget: '' // Reset budget
-        });
         setSubmitStatus('idle');
       }, 3000);
-    }, 1500);
-
-    // Here you would typically send to your API:
-    // try {
-    //   const response = await fetch('/api/contact', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(formData),
-    //   });
-    //   if (response.ok) {
-    //     setSubmitStatus('success');
-    //   } else {
-    //     setSubmitStatus('error');
-    //   }
-    // } catch (error) {
-    //   setSubmitStatus('error');
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+    } catch (error) {
+      console.error('EmailJS send error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <>
