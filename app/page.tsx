@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Chatbot from './components/Chatbot';
 import emailjs from '@emailjs/browser';
 import LogoCloud from '@/components/logo-cloud';
+import { Play } from 'lucide-react';
 export default function Home() {
   const [formData, setFormData] = useState({
     name: '',
@@ -19,7 +20,6 @@ export default function Home() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string; visible: boolean }>({ type: 'success', message: '', visible: false });
   const [selectedServiceIndex, setSelectedServiceIndex] = useState(0);
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [showCoffeeInvite, setShowCoffeeInvite] = useState(false);
   const [showCoffeePreface, setShowCoffeePreface] = useState(false);
   const [coffeeAnim, setCoffeeAnim] = useState(false);
@@ -179,7 +179,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              <span className="text-1xl font-medium text-slate-700 dark:text-slate-300">Every dirham our clients spend turns into measurable returns.</span>
+              <span className="text-1xl font-medium text-slate-700 dark:text-slate-300">5M+ Peoplr around the world softwares and technolgies built by us </span>
             </div>
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight hero-animate-1 relative">
@@ -253,18 +253,58 @@ export default function Home() {
         {/* Services: Secure Website Development */}
         <section id="services-web" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/20 to-white dark:from-slate-900 dark:to-slate-950">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-center text-3xl md:text-5xl font-semibold text-slate-800 dark:text-slate-100">Secure Website Development</h1>
+            <h1 className="text-center text-3xl md:text-5xl font-semibold text-slate-800 dark:text-slate-100"> Secure Website Development</h1>
             <div className="marquee mt-10">
               <div className="marquee-track gap-8 pr-8">
                 {[
-                  "/images/services/1600w-W3nWsJvGCTw.webp",
-                  "/images/services/1600w-Idu8v4LkwTc.webp",
+                  // "/images/services/1600w-W3nWsJvGCTw.webp",
+                  // "/images/services/1600w-Idu8v4LkwTc.webp",
                   "/images/services/teachme.png",
+                  // "/images/services/Myfinance.png",
+                  // "/images/services/1280w-uaCKkInLFTI.webp",
+                  // "/images/services/Cover.svg",
+                  "/images/services/image 24.svg",
+                  "/images/services/image 25.svg",
+                  "/images/services/MacBook Pro 16_ - 1 (1).svg",
+                  "/images/services/image 26.svg",
+                  // "/images/services/Desktop - 1 (1).svg",
+                  // "/images/services/image 21.svg",
+                  // "/images/services/image 22.svg",
+                  // "/images/services/1600w-CCJSQD2zN68.webp",
+                  // "/images/services/1600w-u37738GWtDc.webp",
+                  // "/images/services/1600w-CCJSQD2zN68.webp",
+                ].map((src, i) => (
+                  <div key={i} className="relative h-64 sm:h-72 md:h-80 w-[360px] sm:w-[440px] md:w-[500px] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-lg">
+                    <Image src={src} alt={`Web Showcase ${i+1}`} fill className="object-cover" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Services: Mobile App Development */}
+        <section id="services-mobile" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/20 to-white dark:from-slate-900 dark:to-slate-950">
+          <div className="max-w-7xl mx-auto">
+            <h1 className="text-center text-3xl md:text-5xl font-semibold text-slate-800 dark:text-slate-100">Mobile Application Development</h1>
+            <div className="marquee mt-10">
+              <div className="marquee-track gap-8 pr-8">
+                {[
+                  // "/images/services/1600w-W3nWsJvGCTw.webp",
+                  // "/images/services/1600w-Idu8v4LkwTc.webp",
+                  // "/images/services/teachme.png",
+                 
                   "/images/services/Myfinance.png",
-                  "/images/services/1280w-uaCKkInLFTI.webp",
-                  "/images/services/1600w-CCJSQD2zN68.webp",
-                  "/images/services/1600w-u37738GWtDc.webp",
-                  "/images/services/1600w-CCJSQD2zN68.webp",
+                  // "/images/services/image 20.svg",
+                  "/images/services/image 19.svg",
+                  "/images/services/Mockup.svg",
+                   "/images/services/Vector (1).svg",
+                  "/images/services/image 20.svg",
+
+                  // "/images/services/1280w-uaCKkInLFTI.webp",
+                  // "/images/services/1600w-CCJSQD2zN68.webp",
+                  // "/images/services/1600w-u37738GWtDc.webp",
+                  // "/images/services/1600w-CCJSQD2zN68.webp",
                 ].map((src, i) => (
                   <div key={i} className="relative h-64 sm:h-72 md:h-80 w-[360px] sm:w-[440px] md:w-[500px] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-lg">
                     <Image src={src} alt={`Web Showcase ${i+1}`} fill className="object-cover" />
@@ -282,11 +322,14 @@ export default function Home() {
             <div className="marquee mt-10">
               <div className="marquee-track gap-8 pr-8">
                 {[
-                  "/images/services/1600w-yqkaOutL7SU.jpg",
-                  "/images/services/1600w-IZc7afd0Kr8.webp",
-                  "/images/services/1600w-NWp-ZXzvQJA.webp",
-                  "/images/services/1600w-UPZ-RNumcAo.webp",
-                  "/images/services/1600w-iX5KTFYPY8E.webp",
+                  "/images/services/Group 1.svg",
+                  "/images/services/Group 2.svg",
+                  // "/images/services/Group 3.svg",
+                  // "/images/services/1600w-UPZ-RNumcAo.webp",
+                  // "/images/services/1600w-iX5KTFYPY8E.webp",
+                  "/images/services/image 13.svg",
+                  "/images/services/image 16.svg",
+                  "/images/services/image 18.svg"
                   // "/images/services/web-development.jpg",
                   // "/images/services/automation.jpg",
                   // "/images/services/it-services.jpg",
@@ -303,18 +346,21 @@ export default function Home() {
         {/* Services: AI & Automation Showcases */}
         <section id="services-automation" className="py-24 md:py-36 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50/20 to-white dark:from-slate-900 dark:to-slate-950">
           <div className="max-w-7xl mx-auto">
-            <h1 className="text-center text-3xl md:text-5xl font-semibold text-slate-800 dark:text-slate-100">AI & Automation Showcases</h1>
+            <h1 className="text-center text-3xl md:text-5xl font-semibold text-slate-800 dark:text-slate-100">AI & Automation Solutions</h1>
             <div className="marquee mt-10">
               <div className="marquee-track gap-8 pr-8">
                 {[
-                  "/images/services/1600w-Y3V3eyyvtbk.webp",
-                  "/images/services/1600w-PQndc6YQK2g.webp",
-                  "/images/services/1600w-ekPcGQeub8Y.webp",
-                  "/images/services/1600w-DfPc3lcuJ6Q.webp",
-                  "/images/services/Properhad-2036x1184x249x0x1578x1184x1702370377.webp",
-                  "/images/services/bc321701-017f-4ae5-b208-cc6e04ec7f36-cover.png",
-                  "/images/services/dniytaqxu9cpsseeqpi1.jpg",
-                  "/images/services/download.png",
+                  // "/images/services/1600w-Y3V3eyyvtbk.webp",
+                  // "/images/services/1600w-PQndc6YQK2g.webp",
+                  "/images/services/Group 4.svg",
+                  "/images/services/image 8.svg",
+                  "/images/services/Group 3.svg",
+                  "/images/services/image 15.svg",
+                  "/images/services/image 17.svg",
+                  
+                  // "/images/services/image 10.svg",
+                  // "/images/services/image 11.svg",
+                  // "/images/services/download.png",
                 ].map((src, i) => (
                   <div key={i} className="relative h-64 sm:h-72 md:h-80 w-[360px] sm:w-[440px] md:w-[500px] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-lg">
                     <Image src={src} alt={`Automation Showcase ${i+1}`} fill className="object-cover" />
@@ -325,156 +371,180 @@ export default function Home() {
           </div>
         </section>
 
-        ?
+
 
 
                    {/* Testimonials Section */}
-      <section id="testimonials" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-950">
+      <section id="testimonials" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 dark:from-blue-950/20 dark:via-indigo-950/10 dark:to-purple-950/20">
+        {/* Floating Decorative Elements for gradient effect */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-400/10 rounded-full blur-xl animate-float"></div>
+        <div className="absolute top-40 right-20 w-32 h-32 bg-indigo-400/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-40 left-20 w-24 h-24 bg-purple-400/10 rounded-full blur-xl animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute bottom-20 right-10 w-28 h-28 bg-pink-400/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 dark:text-white mb-2">
-            What our clients say 
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 tracking-tight">
+              What Our Clients Say
             </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400">Trusted by 100+ Clients</p>
+            <p className="text-lg text-slate-600 dark:text-slate-400">Trusted by 100+ businesses for digital transformation</p>
           </div>
-
-          <div className="relative">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-              {[
-                {
-                  quote: "Mudassar helped us in designing our website in both English and Arabic. We will take his help again in the near future.",
-                  name: "CEO,TRUEZONE",
-                  initials: "CM",
-                  location: "Abu Dhabi",
-                  avatar: "/images/hassan (1).png"
-                },
-                {
-                  quote: "The team we dealt with have been world class, in terms of pricing and delivery, I don't think there's much better out there.",
-                  name: "Founder,RENTAL SHIELD",
-                  initials: "RS",
-                  location: "Abu Dhabi",
-                  avatar: "/images/james (1).jpeg"
-                },
-                {
-                  quote: "They provided us with great services in relation to quality assurance. Provided insights and recommendation on the app flow, checked for bugs, mistakes, and any potential risks that might affect the performance of the application.",
-                  name: "CEO, MINDTALES",
-                  initials: "FA",
-                  location: "Abu Dhabi",
-                  avatar: "/images/viktorija (1).jpeg"
-                },
-                {
-                  quote: "We needed an extra pair of hands to quickly move a client-specific project forward. Our in-house backend developer teamed up with GrowthAccess as the frontend developer. They worked well together and l appreciate the result",
-                  name: "PRESIDENT, LOAN BUFFALO",
-                  initials: "OM",
-                  location: "Abu Dhabi",
-                  avatar: "/images/KC (1).jpeg"
-                },
-                
-              ].slice(testimonialIndex, testimonialIndex + 3).map((testimonial, idx) => (
-                <div key={idx} className="bg-slate-50 dark:bg-slate-900 rounded-lg p-5 md:p-6 border border-slate-200 dark:border-slate-800">
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.036a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118L10 13.347l-2.885 2.026c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L3.48 8.72c-.783-.57-.38-1.81.588-1.81H7.53a1 1 0 00.95-.69l1.07-3.292z"/>
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="text-base md:text-[18px] text-slate-700 dark:text-slate-300 leading-relaxed mb-4 line-clamp-4">
-                    "{testimonial.quote}"
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <div className="relative w-9 h-9 rounded-full overflow-hidden ring-1 ring-slate-200 dark:ring-slate-700">
-                      {testimonial.avatar ? (
-                        <Image src={testimonial.avatar} alt={testimonial.name} fill className="object-cover" />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-indigo-600 text-white flex items-center justify-center text-xs font-semibold">
-                          {testimonial.initials}
-                        </div>
-                      )}
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-slate-900 dark:text-white">
-                        {testimonial.name}
-                      </p>
-                      <p className="text-xs text-slate-500">{testimonial.location}</p>
-                    </div>
-                  </div>
+          <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
+            {[
+              {
+                quote: "Mudassar helped us in designing our website in both English and Arabic. We will take his help again in the near future.",
+                name: "CEO, TRUEZONE",
+                role: "Client - Web Design",
+                location: "Abu Dhabi",
+                avatar: "/images/hassan (1).png"
+              },
+              {
+                quote: "The team we dealt with have been world class, in terms of pricing and delivery, I don't think there's much better out there.",
+                name: "Founder, RENTAL SHIELD",
+                role: "Client - App Development",
+                location: "Abu Dhabi",
+                avatar: "/images/james (1).jpeg"
+              },
+              {
+                quote: "They provided us with great services in relation to quality assurance. Provided insights and recommendation on the app flow.",
+                name: "CEO, MINDTALES",
+                role: "Client - QA & Consulting",
+                location: "Abu Dhabi",
+                avatar: "/images/viktorija (1).jpeg"
+              },
+            ].map((testimonial, idx) => (
+              <div key={idx} className="flex-1 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 px-8 py-10 flex flex-col items-center text-center transition-transform hover:-translate-y-2 hover:shadow-2xl">
+                <div className="mb-6">
+                  <Image
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    width={80}
+                    height={80}
+                    className="rounded-full object-cover border-4 border-blue-100 dark:border-blue-900 shadow-lg mx-auto"
+                  />
                 </div>
-              ))}
-            </div>
-
-            {/* Navigation Buttons */}
-            <div className="flex items-center justify-center gap-3 mt-8">
-              <button
-                type="button"
-                onClick={() => setTestimonialIndex((i) => Math.max(0, i - 3))}
-                disabled={testimonialIndex === 0}
-                aria-label="Previous testimonials"
-                className="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/>
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={() => setTestimonialIndex((i) => Math.min(3, i + 3))}
-                disabled={testimonialIndex >= 3}
-                aria-label="Next testimonials"
-                className="w-10 h-10 rounded-lg bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </button>
-            </div>
+                {/* Google 5-star rating */}
+                <div className="flex items-center justify-center gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.036a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118L10 13.347l-2.885 2.026c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L3.48 8.72c-.783-.57-.38-1.81.588-1.81H7.53a1 1 0 00.95-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                  <span className="ml-2 text-xs text-slate-500 dark:text-slate-400">Google Rating</span>
+                </div>
+                <blockquote className="text-base md:text-lg font-normal text-slate-700 dark:text-slate-200 mb-6 leading-relaxed">
+                  <span className="text-blue-600 dark:text-blue-400 text-2xl font-bold mr-2">“</span>
+                  {testimonial.quote}
+                  <span className="text-blue-600 dark:text-blue-400 text-2xl font-bold ml-2">”</span>
+                </blockquote>
+                <div className="mb-2">
+                  <span className="font-semibold text-slate-900 dark:text-white text-lg">{testimonial.name}</span>
+                </div>
+                <div className="text-sm text-slate-500 dark:text-slate-400 mb-1">{testimonial.role}</div>
+                <div className="text-xs text-slate-400 dark:text-slate-500">{testimonial.location}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="relative overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md p-10 md:p-14 text-center">
-            {/* soft gradient wash */}
+      {/* <section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="relative overflow-hidden rounded-3xl border border-blue-300 dark:border-blue-800 bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-slate-900 dark:via-slate-950 dark:to-blue-950 backdrop-blur-md p-10 md:p-14 text-center shadow-2xl">
             <div className="pointer-events-none absolute -top-24 -right-16 h-72 w-72 rounded-full bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-purple-500/15 blur-3xl"></div>
             <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-gradient-to-tr from-emerald-500/10 via-blue-500/10 to-indigo-500/10 blur-3xl"></div>
-
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-5 md:mb-6">
-              Ready to <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">Transform Your Business</span>?
-            </h2>
-            <p className="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-8 md:mb-10 max-w-3xl mx-auto leading-relaxed">
-              Join hundreds of companies already scaling with our AI‑powered automation and growth solutions.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center">
-              <a
-                href="https://cal.com/growthaccess/30min"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-7 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg font-semibold text-base md:text-lg shadow-lg shadow-blue-500/30 hover:from-blue-700 hover:to-indigo-700 transition-all"
-              >
-                Book Consultation
-              </a>
-              <a
-                href="https://wa.me/+971554379700"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-7 py-4 bg-white/90 dark:bg-slate-800/90 text-slate-900 dark:text-slate-100 rounded-lg font-semibold text-base md:text-lg border border-slate-300 dark:border-slate-600 hover:border-slate-400 dark:hover:border-slate-500 transition-all"
-              >
-                Chat on WhatsApp
-              </a>
+            <div className="flex flex-col items-center mb-8">
+              <svg className="w-16 h-16 text-blue-600 mb-4" fill="none" viewBox="0 0 48 48" stroke="currentColor">
+                <circle cx="24" cy="24" r="22" strokeWidth="4" className="text-blue-200" />
+                <path d="M18 16v16l14-8-14-8z" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-blue-700 dark:text-blue-400 mb-2 tracking-tight">Hear Us On The Airwaves!</h2>
+              <p className="text-base md:text-lg text-slate-700 dark:text-slate-200 mb-2 max-w-2xl mx-auto leading-relaxed">
+                We were recently invited to share our story and insights on Dubai Eye 103.8’s <span className="font-semibold">The Reboot</span> podcast.
+              </p>
+              <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 mb-4">Discover how we’re driving innovation, automation, and digital growth in the UAE.</p>
             </div>
-
-            <div className="mt-6 text-xs md:text-sm text-slate-500 dark:text-slate-400">
-              Secure scheduling via Cal.com • No credit card required
+            <div className="bg-white dark:bg-slate-900 rounded-xl border border-blue-100 dark:border-blue-900 p-6 mb-8 shadow-md">
+              <ul className="text-left text-slate-700 dark:text-slate-200 text-base md:text-lg space-y-3">
+                <li><span className="font-semibold text-blue-600 dark:text-blue-400">•</span> Real business stories from the UAE</li>
+                <li><span className="font-semibold text-blue-600 dark:text-blue-400">•</span> How AI and automation are transforming companies</li>
+                <li><span className="font-semibold text-blue-600 dark:text-blue-400">•</span> Tips for digital growth and innovation</li>
+              </ul>
             </div>
+            <a href="https://www.dubaieye1038.com/podcasts/the-reboot/" target="_blank" rel="noopener noreferrer" className="inline-block px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-bold text-lg shadow-lg transition-all">
+              Listen to the Podcast
+            </a>
           </div>
         </div>
-      </section>
+      </section> */}
 
+<section className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#FFFFFF]">
+  
+      <div className="max-w-4xl mx-auto">
+        {/* <div className="relative overflow-hidden rounded-2xl bg-white border border-slate-200 p-10 md:p-14 text-center shadow-lg"> */}
+        <div className="relative rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-gradient-to-br from-emerald-50 via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 p-10 md:p-14 text-center shadow-lg">
+          
+          {/* Icon */}
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 shadow-md mb-6">
+            <Play className="w-8 h-8 text-white fill-white" />
+          </div>
+
+          {/* Heading */}
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            Hear our ceo talks on the uae no 1 technology podcast Dubai eye 103.8
+          </h2>
+
+          {/* Badge */}
+          {/* <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-200 mb-6"> */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-6">
+            {/* <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+            <span className="text-sm font-semibold text-blue-700">Dubai Eye 103.8 - The Reboot</span> */}
+            <div className="w-2 h-2 rounded-full bg-green-600"></div>
+            <span className="text-sm font-semibold text-black">Dubai Eye 103.8 - The Reboot</span>
+          </div>
+
+          {/* Description */}
+          <p className="text-lg text-slate-700 mb-3 max-w-2xl mx-auto">
+            We recently shared our story and insights on <span className="font-semibold">The Reboot</span> podcast.
+          </p>
+          
+          <p className="text-base text-slate-600 mb-8">
+            Discover how we're driving innovation, automation, and digital growth in the UAE.
+          </p>
+
+          {/* Feature list */}
+          <div className="bg-slate-50 rounded-xl border border-slate-200 p-6 mb-8 max-w-2xl mx-auto">
+            <ul className="text-left text-slate-700 space-y-3">
+              <li className="flex items-start gap-3">
+                <span className="text-blue-600 font-bold mt-0.5">•</span>
+                <span>Real business stories from the UAE</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-blue-600 font-bold mt-0.5">•</span>
+                <span>How AI and automation are transforming companies</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-blue-600 font-bold mt-0.5">•</span>
+                <span>Tips for digital growth and innovation</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* CTA Button */}
+          <a 
+            href="https://www.dubaieye1038.com/podcasts/the-reboot/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            Listen to the Podcast
+          </a>
+        </div>
+      </div>
+    </section>
        {/* Contact Form Section */}
-       <section id="contact" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8">
+       <section id="contact" className="py-24 md:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 dark:from-blue-950/20 dark:via-indigo-950/10 dark:to-purple-950/20">
         <div className="max-w-5xl mx-auto">
           {/* Decorative gradient wrapper */}
           <div className="relative rounded-3xl border border-slate-200 dark:border-slate-800 overflow-hidden bg-gradient-to-br from-emerald-50 via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
@@ -537,7 +607,7 @@ export default function Home() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+971 505 452094"
                         className="w-full px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all text-sm"
                       />
                     </div>
