@@ -81,7 +81,7 @@ export default function LogoCloud() {
                                 />
                             </div>
 
-                            <div className="flex">
+                            {/* <div className="flex">
                                 <img
                                     className="mx-auto h-9 w-fit dark:invert"
                                     src="/images/services/app icon.svg"
@@ -89,7 +89,7 @@ export default function LogoCloud() {
                                     height="28"
                                     width="auto"
                                 />
-                            </div>
+                            </div> */}
                         </InfiniteSlider>
 
                         <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>

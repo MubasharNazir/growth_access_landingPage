@@ -1079,7 +1079,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              <span className="text-1xl font-medium text-slate-700 dark:text-slate-300">5M+ Peoplr around the world softwares and technolgies built by us </span>
+              <span className="text-1xl font-medium text-slate-700 dark:text-slate-300">Powering 50+ Abu Dhabi companies with smart technology.</span>
             </div>
             
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight hero-animate-1 relative">
@@ -1602,7 +1602,7 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2">
               <div className="relative h-56 md:h-full">
-                <Image src="/images/Mubashar_Nazir_A_photorealistic_image_of_two_diverse_business_professionals,_a_w_1c324658-a0ff-498e-81de-91ff275795f0.jpg" alt="Coffee invitation" fill className="object-cover" />
+                <Image src="/images/coffee.jpg" alt="Coffee invitation" fill className="object-cover" />
                 <div className="absolute bottom-3 left-3 bg-white/80 dark:bg-slate-900/80 backdrop-blur px-3 py-1.5 rounded-lg text-xs text-slate-700 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700">Let's grab a coffee ☕️</div>
               </div>
 
