@@ -890,7 +890,7 @@ import Image from 'next/image';
 import Chatbot from './components/Chatbot';
 import emailjs from '@emailjs/browser';
 import LogoCloud from '@/components/logo-cloud';
-import { Play } from 'lucide-react';
+import { Mail, MapPin, MessageCircle, Phone, Play } from 'lucide-react';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -1525,7 +1525,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Footer */}
+        {/* Footer
         <footer className="border-t border-slate-800 bg-gradient-to-b from-slate-950 to-slate-900 text-slate-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
             <div className="grid gap-10 md:grid-cols-3">
@@ -1575,7 +1575,149 @@ export default function Home() {
               <p className="text-slate-500">© 2025 GrowthAccess Technologies, Abu Dhabi, UAE.</p>
             </div>
           </div>
-        </footer>
+        </footer> */}
+
+       <footer className="relative bg-gradient-to-br from-green-50 via-cyan-50 to-blue-50">
+      {/* Decorative top border */}
+     
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid gap-12 md:grid-cols-3 lg:gap-16">
+
+          {/* Logo & Description */}
+          <div className="space-y-6">
+            <div className="flex items-center">
+              <div className=" ">
+                 <div className="flex items-center mb-5">
+  <Image 
+    src="/images/logo.png" 
+    alt="Company Logo" 
+    width={150} 
+    height={40} 
+    className="h-9 w-auto" 
+  />
+</div>
+              </div>
+            </div>
+            <p className="text-slate-600 leading-relaxed text-base">
+              Empowering businesses with digital innovation and automation excellence across the UAE.
+            </p>
+            {/* <div className="flex gap-3">
+              {[
+                { icon: '𝕏', href: '#' },
+                { icon: 'in', href: '#' },
+                { icon: 'f', href: '#' },
+                { icon: '📷', href: '#' },
+              ].map((social, i) => (
+                <a
+                  key={i}
+                  href={social.href}
+                  className="w-10 h-10 rounded-lg bg-white border-2 border-slate-200 hover:border-blue-600 hover:bg-gradient-to-br hover:from-blue-600 hover:to-indigo-600 flex items-center justify-center transition-all duration-300 hover:scale-110 text-slate-600 hover:text-white font-semibold shadow-sm hover:shadow-lg hover:shadow-blue-500/30"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div> */}
+          </div>
+
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <h3 className="text-slate-900 font-bold text-lg mb-6 relative inline-block">
+              Get In Touch
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3 group">
+                {/* <MapPin className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" /> */}
+                {/* <span className="text-slate-600 leading-relaxed group-hover:text-slate-900 transition-colors">
+                  Office #308, Majid Al Futtaim Building, near Abu Dhabi Mall, Abu Dhabi, UAE
+                </span> */}
+              </li>
+              <li className="flex items-center gap-3 group">
+                <Phone className="w-5 h-5 text-indigo-600 flex-shrink-0" />
+                <a 
+                  href="tel:+971554379700" 
+                  className="text-slate-600 hover:text-indigo-600 transition-colors font-medium"
+                >
+                  +971 554379700
+                </a>
+              </li>
+              <li className="flex items-center gap-3 group">
+                <MessageCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                <a 
+                  href="https://wa.me/+971554379700" 
+                  className="text-slate-600 hover:text-green-600 transition-colors font-medium"
+                >
+                  WhatsApp Us
+                </a>
+              </li>
+              <li className="flex items-center gap-3 group">
+                <Mail className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                <a 
+                  href="mailto:sales@growthaccess.ae" 
+                  className="text-slate-600 hover:text-blue-600 transition-colors font-medium"
+                >
+                  sales@growthaccess.ae
+                </a>
+              </li>
+              <li className="pt-2">
+                {/* <a
+                  href="https://maps.google.com/?q=Majid%20Al%20Futtaim%20Building%20Abu%20Dhabi%20Mall"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 font-medium hover:from-blue-700 hover:to-indigo-700"
+                >
+                  <MapPin className="w-4 h-4" />
+                  View on Maps
+                </a> */}
+              </li>
+            </ul>
+          </div>
+
+          {/* Quick Links */}
+          <div className="space-y-6">
+            <h3 className="text-slate-900 font-bold text-lg mb-6 relative inline-block">
+              Address
+              <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-600"></span>
+            </h3>
+            {/* <ul className="space-y-3">
+              {[
+                { label: 'Office#308, Majid Al Futtaim Building, near Abu Dhabi Mall, Abu Dhabi, UAE', href: '#services-web' },
+                // { label: 'Mobile Apps', href: '#services-mobile' },
+                // { label: 'Digital Marketing', href: '#services-marketing' },
+                // { label: 'AI & Automation', href: '#services-automation' },
+                // { label: 'Testimonials', href: '#testimonials' },
+                // { label: 'Contact Us', href: '#contact' },
+              
+              ].map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href={link.href} 
+                    className="text-slate-600 hover:text-slate-900 transition-colors inline-flex items-center gap-2 group font-medium"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-600 group-hover:bg-indigo-600 transition-colors"></span>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul> */}
+            <h3 className="text-slate-600 transition-colors font-medium"
+                >
+                 Office #308, Majid Al Futtaim Building, near Abu Dhabi Mall, Abu Dhabi, UAE
+                </h3>
+          </div>
+
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-slate-300 mt-12 pt-8 text-center">
+          <p className="text-slate-500 text-sm">
+            © 2025 <span className="text-slate-700 font-semibold">GrowthAccess Technologies</span>. All rights reserved. Abu Dhabi, UAE.
+          </p>
+        </div>
+      </div>
+    </footer>
+
       </main>
 
       {/* Timed Coffee Invitation Popup */}
