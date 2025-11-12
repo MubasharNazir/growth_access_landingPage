@@ -1175,11 +1175,22 @@ export default function Home() {
             <div className="marquee mt-10">
               <div className="marquee-track gap-8 pr-8">
                 {[
-                  "/images/services/Myfinance.png",
+                  
+                   "/images/services/Fitness tracker.svg",
+                  
                   "/images/services/image 19.svg",
+                  // "/images/services/Desktop - 1 (3).svg",
                   "/images/services/Mockup.svg",
-                  "/images/services/Vector (1).svg",
+                  "/images/services/Myfinance.png",
+                  "/images/services/image 45.svg",
+                  "/images/services/Group 2.jpg",
+                 
+                  "/images/services/dribble.svg",
+                  "/images/services/Thumbnail.svg",
+                  // "/images/services/Spa & Massage App.svg",
+                  // "/images/services/Vector (1).svg",
                   "/images/services/image 20.svg",
+
                 ].map((src, i) => (
                   <div key={i} className="relative h-64 sm:h-72 md:h-80 w-[360px] sm:w-[440px] md:w-[500px] rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 shadow-lg">
                     <Image src={src} alt={`Web Showcase ${i+1}`} fill className="object-cover" />
