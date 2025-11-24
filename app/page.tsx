@@ -1467,13 +1467,14 @@ export default function Home() {
                           className="w-full appearance-none pr-10 px-3.5 py-2.5 md:py-3 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-500 dark:bg-slate-700 dark:text-white transition-all text-sm"
                         >
                           <option value="">Select a service...</option>
-                          <option value="digital-marketing">Digital Marketing</option>
-                          <option value="it-services">IT Services</option>
-                          <option value="automation">AI & Automation</option>
                           <option value="web-development">Web Development</option>
                           <option value="app-development">Mobile App Development</option>
+                          <option value="digital-marketing">Digital Marketing</option>
+                         
+                          <option value="automation">AI & Automation</option>
+                          
                           <option value="ui-ux-design">UI/UX Design</option>
-                          <option value="consulting">IT Consulting</option>
+
                           <option value="erp-crm">ERP & CRM Solutions</option>
                           <option value="cloud-solutions">Cloud Solutions</option>
                           <option value="devops">DevOps & Infrastructure</option>
@@ -1611,7 +1612,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-slate-600 leading-relaxed text-base">
-              Empowering businesses with digital innovation and automation excellence across the UAE.
+              Empowering businesses with digital innovation and automation excellence across the Abu Dhabi,UAE.
             </p>
             {/* <div className="flex gap-3">
               {[
